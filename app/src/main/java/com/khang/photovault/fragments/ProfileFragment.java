@@ -2,19 +2,24 @@ package com.khang.photovault.fragments;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.content.SharedPreferences;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.activity.result.ActivityResultLauncher;
+import androidx.activity.result.contract.ActivityResultContracts;
 import androidx.appcompat.app.AppCompatDelegate;
 import androidx.fragment.app.Fragment;
 
+import com.bumptech.glide.Glide;
 import com.google.android.material.dialog.MaterialAlertDialogBuilder;
 import com.google.android.material.materialswitch.MaterialSwitch;
 import com.google.android.material.textfield.TextInputEditText;
@@ -28,7 +33,27 @@ import com.khang.photovault.R;
 public class ProfileFragment extends Fragment {
 
     private TextView tvName, tvEmail, tvAvatar, tvFavCount;
+    private ImageView imgAvatar;
     private FirebaseUser user;
+
+    // Chọn ảnh đại diện từ máy (Intent ACTION_OPEN_DOCUMENT)
+    private final ActivityResultLauncher<String[]> pickAvatar =
+            registerForActivityResult(new ActivityResultContracts.OpenDocument(), uri -> {
+                if (uri == null || user == null) return;
+                try {
+                    requireContext().getContentResolver().takePersistableUriPermission(
+                            uri, Intent.FLAG_GRANT_READ_URI_PERMISSION);
+                } catch (Exception ignored) {
+                }
+                requireContext().getSharedPreferences("settings", android.content.Context.MODE_PRIVATE)
+                        .edit().putString("avatar_" + user.getUid(), uri.toString()).apply();
+                showAvatar(uri);
+            });
+
+    private void showAvatar(Uri uri) {
+        imgAvatar.setVisibility(View.VISIBLE);
+        Glide.with(this).load(uri).circleCrop().into(imgAvatar);
+    }
 
     /** Đăng xuất và quay về màn hình đăng nhập (dùng chung cho Toolbar + nút trong Hồ sơ) */
     public static void logout(Activity a) {
@@ -52,6 +77,13 @@ public class ProfileFragment extends Fragment {
 
         bindUser();
         loadFavCount();
+
+        // Ảnh đại diện
+        imgAvatar = v.findViewById(R.id.imgAvatar);
+        String saved = requireContext().getSharedPreferences("settings", android.content.Context.MODE_PRIVATE)
+                .getString("avatar_" + user.getUid(), null);
+        if (saved != null) showAvatar(Uri.parse(saved));
+        ((View) tvAvatar.getParent()).setOnClickListener(x -> pickAvatar.launch(new String[]{"image/*"}));
 
         // Dark mode
         SharedPreferences sp = requireContext().getSharedPreferences("settings", android.content.Context.MODE_PRIVATE);

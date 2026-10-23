@@ -22,6 +22,12 @@
     </item>
 
     <item
+        android:id="@+id/action_slideshow"
+        android:icon="@drawable/ic_slideshow"
+        android:title="Trình chiếu"
+        app:showAsAction="ifRoom" />
+
+    <item
         android:id="@+id/action_grid"
         android:icon="@drawable/ic_grid"
         android:title="Đổi số cột"

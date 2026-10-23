@@ -91,6 +91,7 @@ public class MainActivity extends AppCompatActivity {
         menu.findItem(R.id.action_search).setVisible(show);
         menu.findItem(R.id.action_sort).setVisible(show);
         menu.findItem(R.id.action_grid).setVisible(show);
+        menu.findItem(R.id.action_slideshow).setVisible(show);
         return super.onPrepareOptionsMenu(menu);
     }
 
@@ -103,6 +104,7 @@ public class MainActivity extends AppCompatActivity {
         if (id == R.id.sort_oldest) { if (f != null) f.sort(1); return true; }
         if (id == R.id.sort_name)   { if (f != null) f.sort(2); return true; }
         if (id == R.id.action_grid) { if (f != null) f.toggleGrid(); return true; }
+        if (id == R.id.action_slideshow) { if (f != null) f.startSlideshow(); return true; }
         if (id == R.id.action_logout) {
             ProfileFragment.logout(this);
             return true;

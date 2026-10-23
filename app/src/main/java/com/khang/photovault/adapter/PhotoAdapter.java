@@ -146,6 +146,10 @@ public class PhotoAdapter extends RecyclerView.Adapter<PhotoAdapter.VH> {
                 });
     }
 
+    public List<Photo> getShown() {
+        return shown;
+    }
+
     // ===== Adapter =====
     @NonNull
     @Override

@@ -20,16 +20,37 @@
             android:padding="24dp"
             android:clipToOutline="true">
 
-            <TextView
-                android:id="@+id/tvAvatar"
+            <FrameLayout
                 android:layout_width="88dp"
-                android:layout_height="88dp"
-                android:background="@drawable/bg_circle"
-                android:gravity="center"
-                android:text="K"
-                android:textColor="@color/primary"
-                android:textSize="38sp"
-                android:textStyle="bold" />
+                android:layout_height="88dp">
+
+                <TextView
+                    android:id="@+id/tvAvatar"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="@drawable/bg_circle"
+                    android:gravity="center"
+                    android:text="K"
+                    android:textColor="@color/primary"
+                    android:textSize="38sp"
+                    android:textStyle="bold" />
+
+                <ImageView
+                    android:id="@+id/imgAvatar"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:contentDescription="Ảnh đại diện"
+                    android:scaleType="centerCrop"
+                    android:visibility="gone" />
+            </FrameLayout>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="6dp"
+                android:text="Chạm vào ảnh để đổi ảnh đại diện"
+                android:textColor="#CCFFFFFF"
+                android:textSize="11sp" />
 
             <TextView
                 android:id="@+id/tvName"
