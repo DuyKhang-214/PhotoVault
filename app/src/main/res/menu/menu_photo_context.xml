@@ -1,0 +1,5 @@
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item android:id="@+id/ctx_favorite" android:title="Thêm vào yêu thích" />
+    <item android:id="@+id/ctx_share" android:title="Chia sẻ" />
+    <item android:id="@+id/ctx_info" android:title="Thông tin ảnh" />
+</menu>

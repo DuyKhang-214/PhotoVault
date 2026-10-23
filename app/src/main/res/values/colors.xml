@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="primary">#6C5CE7</color>
+    <color name="secondary">#A29BFE</color>
+    <color name="gradient_start">#6C5CE7</color>
+    <color name="gradient_mid">#8E6CEF</color>
+    <color name="gradient_end">#E056A0</color>
+    <color name="danger">#E5484D</color>
+</resources>

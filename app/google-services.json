@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "442160325781",
+    "project_id": "photovault-993de",
+    "storage_bucket": "photovault-993de.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:442160325781:android:54ad9b0ec00502f865679c",
+        "android_client_info": {
+          "package_name": "com.khang.photovault"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyArjHO_ZM1CyhPYMVNM9sapw6SQ9qbjE4Q"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
